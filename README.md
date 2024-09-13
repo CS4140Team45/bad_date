@@ -1,5 +1,5 @@
 # BadDate
-# Names:
+# Names
 # Robyn
 
 To start your Phoenix server:
