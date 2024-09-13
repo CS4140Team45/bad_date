@@ -1,6 +1,9 @@
 # BadDate
-# Names
-# Robyn
+=======
+Team Members:
+Maddy
+Lydia
+Robyn
 
 To start your Phoenix server:
 
