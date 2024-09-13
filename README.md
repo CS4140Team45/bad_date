@@ -4,6 +4,7 @@ Team Members:
 Maddy
 Lydia
 Robyn
+Jenna
 
 To start your Phoenix server:
 
