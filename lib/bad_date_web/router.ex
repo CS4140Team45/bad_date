@@ -17,7 +17,10 @@ defmodule BadDateWeb.Router do
   scope "/", BadDateWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/", PageController, :homepage
+    get "/login", PageController, :login_form
+    post "/login", PageController, :login
+
   end
 
   # Other scopes may use custom stacks.
