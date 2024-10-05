@@ -1,0 +1,20 @@
+<.header class="text-center">
+  User List
+  <:subtitle>View all users of BadDate</:subtitle>
+</.header>
+<div class="space-y-12 divide-y">
+    <.link
+    href={~p"/users/settings"}
+    class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+    >
+    Settings
+  </.link>
+    <br>
+    <%= for user <- @users do %>
+    <div>
+        <p>Email: <%= user.email %></p>
+        <p>Admin: <%= if user.is_admin, do: "Yes", else: "No" %></p>
+    </div>
+    <% end %>
+</div>
+

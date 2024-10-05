@@ -60,4 +60,22 @@
       </:actions>
     </.simple_form>
   </div>
+  <%= if @current_user.is_admin do %>
+    <div>
+    <br>
+      <.header class="text-center">
+        User List
+        <:subtitle>View all users of BadDate</:subtitle>
+      </.header>
+      <div class="space-y-12 divide-y">
+        <%= for user <- @non_admin do %>
+          <div>
+            <br>
+            <p>Email: <%= user.email %></p>
+            <p>Admin: <%= if user.is_admin, do: "Yes", else: "No" %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>

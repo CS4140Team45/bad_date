@@ -60,6 +60,27 @@ defmodule BadDate.Accounts do
   """
   def get_user!(id), do: Repo.get!(User, id)
 
+  #Added this to list non-admin users 10/4/24
+  def list_non_admin do
+    Repo.all(from u in User, where: u.is_admin == false)
+  end
+
+  #This deletes the users Added 10/4/24
+  def delete_user(user_id) do
+    user = Repo.get(User, user_id)
+
+    if user do
+      Repo.delete(user)
+    else
+      {:error, :not_found}
+    end
+  end
+
+  def list_users() do
+    Repo.all(User)
+  end
+
+
   ## User registration
 
   @doc """
