@@ -1,0 +1,28 @@
+<.layout>
+  <h1><%= @user.username %>'s Profile</h1>
+  
+  <div>
+    <h2>Bio</h2>
+    <p><%= @user.bio || "No bio available." %></p>
+  </div>
+
+  <div>
+    <h2>Email</h2>
+    <p><%= @user.email %></p>
+  </div>
+
+  <div>
+    <h2>Profile Picture</h2>
+    <img src="<%= @user.profile_picture_url || "default_profile_picture.png" %>" alt="<%= @user.username %>'s profile picture" />
+  </div>
+
+  <div>
+    <h2>Additional Information</h2>
+    <!-- You can add more sections or details as needed -->
+  </div>
+
+  <div>
+    <a href="<%= Routes.user_edit_path(@conn, :edit, @user) %>">Edit Profile</a>
+  </div>
+</.layout>
+

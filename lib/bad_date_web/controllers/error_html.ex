@@ -1,24 +1,23 @@
 defmodule BadDateWeb.ErrorHTML do
-  @moduledoc """
-  This module is invoked by your endpoint in case of errors on HTML requests.
-
-  See config/config.exs.
-  """
   use BadDateWeb, :html
 
-  # If you want to customize your error pages,
-  # uncomment the embed_templates/1 call below
-  # and add pages to the error directory:
-  #
-  #   * lib/bad_date_web/controllers/error_html/404.html.heex
-  #   * lib/bad_date_web/controllers/error_html/500.html.heex
-  #
-  # embed_templates "error_html/*"
+  # Render a 404 error page
+  def not_found(conn, _params) do
+    render(conn, "404.html")
+  end
 
-  # The default is to render a plain text page based on
-  # the template name. For example, "404.html" becomes
-  # "Not Found".
-  def render(template, _assigns) do
-    Phoenix.Controller.status_message_from_template(template)
+  # Render a 500 error page
+  def internal_server_error(conn, _params) do
+    render(conn, "500.html")
+  end
+
+  # If you want to add a catch-all for unknown errors:
+  def render("404.html", _assigns) do
+    "Page not found"
+  end
+
+  def render("500.html", _assigns) do
+    "Internal server error"
   end
 end
+
