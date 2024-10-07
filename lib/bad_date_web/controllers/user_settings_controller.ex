@@ -7,7 +7,28 @@ defmodule BadDateWeb.UserSettingsController do
   plug :assign_email_and_password_changesets
 
   def edit(conn, _params) do
-    render(conn, :edit)
+    current_user = conn.assigns.current_user
+    non_admin = 
+      if current_user.is_admin do
+        Accounts.list_non_admin()
+      else
+      []
+      end
+  
+    render(conn, :edit, non_admin: non_admin)
+  end
+
+  def user_list(conn, _params) do
+    current_user = conn.assigns.current_user
+
+    if current_user.is_admin do
+      users = Accounts.list_users()
+      render(conn, :user_list, users: users)
+    else
+      conn
+      |> put_flash(:error, "Sorry... You don't have permission to view this.")
+      |> redirect(to: ~p"/users/settings")
+    end
   end
 
   def update(conn, %{"action" => "update_email"} = params) do
