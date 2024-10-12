@@ -10,17 +10,41 @@
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
+
+    <style>
+      .button {
+        padding: 0.25rem 0.5rem;
+        background-color: pink;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        color: #333;
+        font-size: 0.875rem;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: lime;
+      }
+    </style>
   </head>
   <body class="bg-white">
     <ul class="relative z-10 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end">
       <%= if @current_user do %>
-        <li class="text-[0.8125rem] leading-6 text-zinc-900">
-          <%= @current_user.email %>
+         <li class="text-[0.8125rem] leading-6 text-zinc-900">
+          Welcome back, <%= @current_user.email %>
+        </li>
+        <li>
+          <.link
+            href={~p"/"}
+            class="button"
+          >
+            Home
+          </.link>
         </li>
         <li>
           <.link
             href={~p"/users/settings"}
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+            class="button"
           >
             Settings
           </.link>
@@ -29,7 +53,7 @@
           <.link
             href={~p"/users/log_out"}
             method="delete"
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+            class="button"
           >
             Log out
           </.link>
@@ -38,7 +62,7 @@
         <li>
           <.link
             href={~p"/users/register"}
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+            class="button"
           >
             Register
           </.link>
@@ -46,7 +70,7 @@
         <li>
           <.link
             href={~p"/users/log_in"}
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+            class="button"
           >
             Log in
           </.link>
